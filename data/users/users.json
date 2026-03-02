@@ -615,5 +615,40 @@
     },
     "certificates": [],
     "createdAt": "2026-03-02T16:27:27.734Z"
+  },
+  "b020f589123a": {
+    "id": "b020f589123a",
+    "name": "Foo Bar",
+    "email": "foo@bar.com",
+    "passwordHash": "b59db6d3bd4aae5adb28c8d28d84cc1212da1df1b3e486739ce0a4279e289fca",
+    "xp": 15,
+    "level": 1,
+    "answeredQuestions": {
+      "py_b_016": {
+        "answer": "5 squared",
+        "correct": true,
+        "timestamp": "2026-03-02T17:09:27.497Z"
+      }
+    },
+    "analytics": {
+      "Python": {
+        "correct": 1,
+        "total": 1,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 1,
+            "total": 1
+          }
+        },
+        "byTopic": {
+          "Operators": {
+            "correct": 1,
+            "total": 1
+          }
+        }
+      }
+    },
+    "certificates": [],
+    "createdAt": "2026-03-02T17:09:09.672Z"
   }
 }
