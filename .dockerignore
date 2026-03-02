@@ -1,0 +1,33 @@
+# Dependencies (installed fresh in container)
+node_modules/
+
+# C++ build artifacts (won't compile on Railway)
+build/
+*.node
+binding.gyp
+backend/
+
+# Git
+.git/
+.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Docs (not needed at runtime)
+README.md
+LICENSE
+
+# Environment
+.env
+.env.local

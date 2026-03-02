@@ -1,0 +1,619 @@
+{
+  "rehan": {
+    "id": "rehan",
+    "name": "Rehan",
+    "xp": 30,
+    "level": 1,
+    "answeredQuestions": {
+      "py_b_002": {
+        "answer": ".upper()",
+        "correct": true,
+        "timestamp": "2026-03-01T12:42:56.153Z"
+      },
+      "py_b_005": {
+        "answer": "0,1,2,3,4,5",
+        "correct": false,
+        "timestamp": "2026-03-02T15:29:39.725Z"
+      },
+      "py_b_001": {
+        "answer": "<class 'int'>",
+        "correct": true,
+        "timestamp": "2026-03-02T15:29:44.972Z"
+      }
+    },
+    "analytics": {
+      "Python": {
+        "correct": 2,
+        "total": 3,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 2,
+            "total": 3
+          }
+        },
+        "byTopic": {
+          "Strings": {
+            "correct": 1,
+            "total": 1
+          },
+          "Loops": {
+            "correct": 0,
+            "total": 1
+          },
+          "Variables": {
+            "correct": 1,
+            "total": 1
+          }
+        }
+      }
+    },
+    "certificates": [],
+    "createdAt": "2026-03-01T12:42:23.736Z"
+  },
+  "asfak": {
+    "id": "asfak",
+    "name": "Asfak",
+    "xp": 0,
+    "level": 1,
+    "answeredQuestions": {},
+    "analytics": {},
+    "certificates": [],
+    "createdAt": "2026-03-02T14:18:54.430Z"
+  },
+  "khatri": {
+    "id": "khatri",
+    "name": "Khatri",
+    "xp": 45,
+    "level": 1,
+    "answeredQuestions": {
+      "js_b_002": {
+        "answer": "'object'",
+        "correct": true,
+        "timestamp": "2026-03-02T15:15:25.671Z"
+      },
+      "js_b_038": {
+        "answer": "toString()",
+        "correct": true,
+        "timestamp": "2026-03-02T16:35:20.465Z"
+      },
+      "js_b_011": {
+        "answer": "let is older",
+        "correct": false,
+        "timestamp": "2026-03-02T16:35:22.600Z"
+      },
+      "js_b_050": {
+        "answer": "setInterval",
+        "correct": true,
+        "timestamp": "2026-03-02T16:35:24.000Z"
+      },
+      "js_b_033": {
+        "answer": "null",
+        "correct": false,
+        "timestamp": "2026-03-02T16:35:25.216Z"
+      }
+    },
+    "analytics": {
+      "JavaScript": {
+        "correct": 3,
+        "total": 5,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 3,
+            "total": 5
+          }
+        },
+        "byTopic": {
+          "Types": {
+            "correct": 1,
+            "total": 1
+          },
+          "Type Conversion": {
+            "correct": 1,
+            "total": 1
+          },
+          "Variables": {
+            "correct": 0,
+            "total": 1
+          },
+          "Timers": {
+            "correct": 1,
+            "total": 1
+          },
+          "Strings": {
+            "correct": 0,
+            "total": 1
+          }
+        }
+      }
+    },
+    "certificates": [],
+    "createdAt": "2026-03-02T14:19:32.527Z"
+  },
+  "test": {
+    "id": "test",
+    "name": "test",
+    "xp": 135,
+    "level": 1,
+    "answeredQuestions": {
+      "py_b_005": {
+        "answer": "0,1,2,3,4",
+        "correct": true,
+        "timestamp": "2026-03-02T15:14:00.346Z"
+      },
+      "py_b_004": {
+        "answer": "elif",
+        "correct": true,
+        "timestamp": "2026-03-02T15:13:05.159Z"
+      },
+      "py_b_001": {
+        "answer": "<class 'int'>",
+        "correct": true,
+        "timestamp": "2026-03-02T15:14:41.315Z"
+      },
+      "py_b_002": {
+        "answer": ".upper()",
+        "correct": true,
+        "timestamp": "2026-03-02T15:14:17.976Z"
+      },
+      "py_b_003": {
+        "answer": "append()",
+        "correct": true,
+        "timestamp": "2026-03-02T15:13:23.763Z"
+      },
+      "js_b_003": {
+        "answer": "size",
+        "correct": false,
+        "timestamp": "2026-03-02T15:22:14.285Z"
+      },
+      "js_b_004": {
+        "answer": "=>",
+        "correct": true,
+        "timestamp": "2026-03-02T15:22:52.174Z"
+      },
+      "js_b_005": {
+        "answer": "Both A and C",
+        "correct": true,
+        "timestamp": "2026-03-02T15:22:57.054Z"
+      },
+      "js_b_002": {
+        "answer": "'object'",
+        "correct": true,
+        "timestamp": "2026-03-02T15:22:41.942Z"
+      },
+      "js_b_001": {
+        "answer": "let",
+        "correct": true,
+        "timestamp": "2026-03-02T15:22:47.398Z"
+      }
+    },
+    "analytics": {
+      "Python": {
+        "correct": 5,
+        "total": 5,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 5,
+            "total": 5
+          }
+        },
+        "byTopic": {
+          "Loops": {
+            "correct": 1,
+            "total": 1
+          },
+          "Conditionals": {
+            "correct": 1,
+            "total": 1
+          },
+          "Variables": {
+            "correct": 1,
+            "total": 1
+          },
+          "Strings": {
+            "correct": 1,
+            "total": 1
+          },
+          "Lists": {
+            "correct": 1,
+            "total": 1
+          }
+        }
+      },
+      "JavaScript": {
+        "correct": 4,
+        "total": 5,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 4,
+            "total": 5
+          }
+        },
+        "byTopic": {
+          "Arrays": {
+            "correct": 0,
+            "total": 1
+          },
+          "Functions": {
+            "correct": 1,
+            "total": 1
+          },
+          "DOM": {
+            "correct": 1,
+            "total": 1
+          },
+          "Types": {
+            "correct": 1,
+            "total": 1
+          },
+          "Variables": {
+            "correct": 1,
+            "total": 1
+          }
+        }
+      }
+    },
+    "certificates": [
+      {
+        "id": "ZYNC-MM9BPRLE-05E93B88",
+        "userId": "test",
+        "name": "test",
+        "language": "Python",
+        "accuracy": 100,
+        "questionsAnswered": 5,
+        "level": 1,
+        "issuedAt": "2026-03-02T15:18:15.026Z"
+      }
+    ],
+    "createdAt": "2026-03-02T15:09:36.694Z"
+  },
+  "te": {
+    "id": "te",
+    "name": "te",
+    "xp": 75,
+    "level": 1,
+    "answeredQuestions": {
+      "py_b_001": {
+        "answer": "<class 'int'>",
+        "correct": true,
+        "timestamp": "2026-03-02T15:13:33.462Z"
+      },
+      "py_b_005": {
+        "answer": "0,1,2,3,4",
+        "correct": true,
+        "timestamp": "2026-03-02T15:13:40.149Z"
+      },
+      "py_b_003": {
+        "answer": "append()",
+        "correct": true,
+        "timestamp": "2026-03-02T15:13:49.465Z"
+      },
+      "py_b_002": {
+        "answer": ".upper()",
+        "correct": true,
+        "timestamp": "2026-03-02T15:13:53.637Z"
+      },
+      "py_b_004": {
+        "answer": "elif",
+        "correct": true,
+        "timestamp": "2026-03-02T15:13:56.702Z"
+      }
+    },
+    "analytics": {
+      "Python": {
+        "correct": 5,
+        "total": 5,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 5,
+            "total": 5
+          }
+        },
+        "byTopic": {
+          "Variables": {
+            "correct": 1,
+            "total": 1
+          },
+          "Loops": {
+            "correct": 1,
+            "total": 1
+          },
+          "Lists": {
+            "correct": 1,
+            "total": 1
+          },
+          "Strings": {
+            "correct": 1,
+            "total": 1
+          },
+          "Conditionals": {
+            "correct": 1,
+            "total": 1
+          }
+        }
+      }
+    },
+    "certificates": [
+      {
+        "id": "ZYNC-MM9BKC53-D8F9A615",
+        "userId": "te",
+        "name": "te",
+        "language": "Python",
+        "accuracy": 100,
+        "questionsAnswered": 5,
+        "level": 1,
+        "issuedAt": "2026-03-02T15:14:01.719Z"
+      }
+    ],
+    "createdAt": "2026-03-02T15:13:28.591Z"
+  },
+  "khatr": {
+    "id": "khatr",
+    "name": "Khatr",
+    "xp": 15,
+    "level": 1,
+    "answeredQuestions": {
+      "js_b_002": {
+        "answer": "'object'",
+        "correct": true,
+        "timestamp": "2026-03-02T15:15:14.152Z"
+      }
+    },
+    "analytics": {
+      "JavaScript": {
+        "correct": 1,
+        "total": 1,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 1,
+            "total": 1
+          }
+        },
+        "byTopic": {
+          "Types": {
+            "correct": 1,
+            "total": 1
+          }
+        }
+      }
+    },
+    "certificates": [],
+    "createdAt": "2026-03-02T15:15:09.607Z"
+  },
+  "7d452b719fad": {
+    "id": "7d452b719fad",
+    "name": "TestUser",
+    "email": "test@zynthex.com",
+    "passwordHash": "29dc6e7e6fe628a1a7114d3051a2b29d41990b2ea8b458860e3be3ab0e787283",
+    "xp": 890,
+    "level": 3,
+    "answeredQuestions": {
+      "js_x_012": {
+        "answer": "instantiate()",
+        "correct": true,
+        "timestamp": "2026-03-02T15:56:55.653Z"
+      },
+      "js_x_035": {
+        "answer": "All of above",
+        "correct": true,
+        "timestamp": "2026-03-02T15:57:00.381Z"
+      },
+      "js_x_013": {
+        "answer": "All of above",
+        "correct": true,
+        "timestamp": "2026-03-02T15:57:02.365Z"
+      },
+      "js_x_048": {
+        "answer": "All of above",
+        "correct": true,
+        "timestamp": "2026-03-02T15:57:03.853Z"
+      },
+      "js_x_018": {
+        "answer": "Build tool",
+        "correct": false,
+        "timestamp": "2026-03-02T15:57:05.197Z"
+      },
+      "js_x_043": {
+        "answer": "Scalable Vector Graphics",
+        "correct": false,
+        "timestamp": "2026-03-02T15:57:08.541Z"
+      },
+      "js_x_025": {
+        "answer": "Universal module",
+        "correct": false,
+        "timestamp": "2026-03-02T15:57:10.990Z"
+      },
+      "py_b_021": {
+        "answer": "break",
+        "correct": true,
+        "timestamp": "2026-03-02T16:23:55.116Z"
+      },
+      "java_b_018": {
+        "answer": "3",
+        "correct": false,
+        "timestamp": "2026-03-02T16:24:08.118Z"
+      },
+      "java_b_040": {
+        "answer": "Can be changed",
+        "correct": false,
+        "timestamp": "2026-03-02T16:24:10.405Z"
+      },
+      "java_b_027": {
+        "answer": "0",
+        "correct": false,
+        "timestamp": "2026-03-02T16:24:11.845Z"
+      },
+      "java_b_045": {
+        "answer": "Access",
+        "correct": false,
+        "timestamp": "2026-03-02T16:24:12.917Z"
+      },
+      "py_e_036": {
+        "answer": "4",
+        "correct": true,
+        "timestamp": "2026-03-02T16:25:15.759Z"
+      },
+      "py_e_046": {
+        "answer": "Removes first occurrence of 2",
+        "correct": true,
+        "timestamp": "2026-03-02T16:25:36.976Z"
+      },
+      "js_b_023": {
+        "answer": "Number between 0 and 1",
+        "correct": true,
+        "timestamp": "2026-03-02T16:31:48.781Z"
+      },
+      "js_b_040": {
+        "answer": "NaN",
+        "correct": false,
+        "timestamp": "2026-03-02T16:32:04.475Z"
+      }
+    },
+    "analytics": {
+      "JavaScript": {
+        "correct": 5,
+        "total": 9,
+        "byDifficulty": {
+          "Expert": {
+            "correct": 4,
+            "total": 7
+          },
+          "Beginner": {
+            "correct": 1,
+            "total": 2
+          }
+        },
+        "byTopic": {
+          "WebAssembly": {
+            "correct": 1,
+            "total": 1
+          },
+          "MutationObserver": {
+            "correct": 1,
+            "total": 1
+          },
+          "TC39": {
+            "correct": 1,
+            "total": 1
+          },
+          "Vibration API": {
+            "correct": 1,
+            "total": 1
+          },
+          "Webpack": {
+            "correct": 0,
+            "total": 1
+          },
+          "SVG": {
+            "correct": 0,
+            "total": 1
+          },
+          "UMD": {
+            "correct": 0,
+            "total": 1
+          },
+          "Math": {
+            "correct": 1,
+            "total": 1
+          },
+          "Type Conversion": {
+            "correct": 0,
+            "total": 1
+          }
+        }
+      },
+      "Python": {
+        "correct": 3,
+        "total": 3,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 1,
+            "total": 1
+          },
+          "Easy": {
+            "correct": 2,
+            "total": 2
+          }
+        },
+        "byTopic": {
+          "Loops": {
+            "correct": 1,
+            "total": 1
+          },
+          "Math Module": {
+            "correct": 1,
+            "total": 1
+          },
+          "List Methods": {
+            "correct": 1,
+            "total": 1
+          }
+        }
+      },
+      "Java": {
+        "correct": 0,
+        "total": 4,
+        "byDifficulty": {
+          "Beginner": {
+            "correct": 0,
+            "total": 4
+          }
+        },
+        "byTopic": {
+          "Strings": {
+            "correct": 0,
+            "total": 1
+          },
+          "Final": {
+            "correct": 0,
+            "total": 1
+          },
+          "Methods": {
+            "correct": 0,
+            "total": 1
+          },
+          "Overloading": {
+            "correct": 0,
+            "total": 1
+          }
+        }
+      }
+    },
+    "certificates": [],
+    "createdAt": "2026-03-02T15:43:47.081Z"
+  },
+  "8e5827da118b": {
+    "id": "8e5827da118b",
+    "name": "CYBER NOVA",
+    "email": "cybernova613@gmail.com",
+    "passwordHash": "05fd55b2d1dfb7769a5a684588145dcb5130d8bb59503c810ca88b1820647db8",
+    "xp": 0,
+    "level": 1,
+    "answeredQuestions": {
+      "shell_e_020": {
+        "answer": "getline",
+        "correct": false,
+        "timestamp": "2026-03-02T16:50:55.511Z"
+      }
+    },
+    "analytics": {
+      "Shell": {
+        "correct": 0,
+        "total": 1,
+        "byDifficulty": {
+          "Easy": {
+            "correct": 0,
+            "total": 1
+          }
+        },
+        "byTopic": {
+          "Read": {
+            "correct": 0,
+            "total": 1
+          }
+        }
+      }
+    },
+    "certificates": [],
+    "createdAt": "2026-03-02T16:27:27.734Z"
+  }
+}
