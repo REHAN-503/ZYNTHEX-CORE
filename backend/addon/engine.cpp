@@ -1,12 +1,4 @@
-/**
- * ZYNTHEX CORE — C++ Engine Addon Skeleton
- * Node-API (N-API) based quiz logic engine
- *
- * Build: node-gyp configure build
- * Requires: node-addon-api, node-gyp
- *
- * In production, link against sqlite3 for persistence.
- */
+
 
 #include <napi.h>
 #include <string>
@@ -16,7 +8,7 @@
 #include <ctime>
 #include <random>
 
-// ─── User State (in-memory; replace with SQLite for production) ───────────────
+
 struct UserData {
   std::string name;
   int xp = 0;
@@ -28,7 +20,7 @@ struct UserData {
 static std::unordered_map<std::string, UserData> g_users;
 static std::mt19937 g_rng(std::random_device{}());
 
-// XP thresholds
+
 static const std::vector<int> LEVEL_THRESHOLDS = {
   0, 200, 500, 1000, 1800, 3000, 5000, 8000, 12000, 18000, 25000
 };
@@ -42,11 +34,6 @@ static int computeLevel(int xp) {
   return std::min(level, static_cast<int>(LEVEL_THRESHOLDS.size()));
 }
 
-// ─── N-API Exported Functions ─────────────────────────────────────────────────
-
-/**
- * initializeUser(name: string) -> { userId, name, xp, level }
- */
 Napi::Value InitializeUser(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
 
@@ -57,7 +44,7 @@ Napi::Value InitializeUser(const Napi::CallbackInfo& info) {
 
   std::string name = info[0].As<Napi::String>().Utf8Value();
   std::string userId = name;
-  // Lowercase + replace spaces
+
   std::transform(userId.begin(), userId.end(), userId.begin(), ::tolower);
   std::replace(userId.begin(), userId.end(), ' ', '_');
 
@@ -76,9 +63,6 @@ Napi::Value InitializeUser(const Napi::CallbackInfo& info) {
   return result;
 }
 
-/**
- * getUserXP(userId: string) -> { xp, level }
- */
 Napi::Value GetUserXP(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info.Length() < 1 || !info[0].IsString()) {
@@ -100,9 +84,7 @@ Napi::Value GetUserXP(const Napi::CallbackInfo& info) {
   return result;
 }
 
-/**
- * getUserLevel(userId: string) -> number
- */
+
 Napi::Value GetUserLevel(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info.Length() < 1 || !info[0].IsString()) return Napi::Number::New(env, 1);
@@ -111,9 +93,7 @@ Napi::Value GetUserLevel(const Napi::CallbackInfo& info) {
   return Napi::Number::New(env, computeLevel(g_users[userId].xp));
 }
 
-/**
- * submitAnswer(userId, questionId, answer, correct, xpReward) -> { newXP, level }
- */
+
 Napi::Value SubmitAnswer(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info.Length() < 5) {
@@ -145,9 +125,7 @@ Napi::Value SubmitAnswer(const Napi::CallbackInfo& info) {
   return result;
 }
 
-/**
- * getUserAnalytics(userId: string) -> { xp, level, total, correct, accuracy }
- */
+
 Napi::Value GetUserAnalytics(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info.Length() < 1 || !info[0].IsString()) return env.Null();
@@ -177,9 +155,7 @@ Napi::Value GetUserAnalytics(const Napi::CallbackInfo& info) {
   return result;
 }
 
-/**
- * generateCertificate(userId, language) -> { certId, name, language, accuracy, timestamp }
- */
+
 Napi::Value GenerateCertificate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info.Length() < 2) return env.Null();
@@ -204,10 +180,6 @@ Napi::Value GenerateCertificate(const Napi::CallbackInfo& info) {
   return result;
 }
 
-/**
- * loadUser(userId, name, xp, questionsAnswered, correctAnswers) → undefined
- * Hydrates C++ state from a persisted JSON record on server startup.
- */
 Napi::Value LoadUser(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
   if (info.Length() < 5) {
@@ -232,7 +204,7 @@ Napi::Value LoadUser(const Napi::CallbackInfo& info) {
   return env.Undefined();
 }
 
-// ─── Module Registration ──────────────────────────────────────────────────────
+
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
   exports.Set("initializeUser",   Napi::Function::New(env, InitializeUser));
   exports.Set("loadUser",         Napi::Function::New(env, LoadUser));
