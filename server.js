@@ -1,10 +1,3 @@
-/**
- * ╔══════════════════════════════════════════════════════╗
- * ║   ZYNTHEX CORE — Code Intelligence Engine           ║
- * ║   C++ N-API engine for XP/scoring + Node.js host    ║
- * ║   Start: node server.js                             ║
- * ╚══════════════════════════════════════════════════════╝
- */
 
 'use strict';
 
@@ -20,7 +13,6 @@ const QUESTIONS_FILE = path.join(__root, 'data', 'questions', 'questions.json');
 const USERS_FILE = path.join(__root, 'data', 'users', 'users.json');
 const FRONTEND_DIR = path.join(__root, 'frontend');
 
-// ─── C++ Engine (N-API addon) ─────────────────────────────────────────────────
 let engine = null;
 try {
   engine = require('./build/Release/zynthex_engine');
@@ -30,7 +22,6 @@ try {
   console.warn('    Run `npm run build` to compile the addon.');
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function genId() {
   return crypto.randomBytes(4).toString('hex').toUpperCase();
@@ -55,7 +46,6 @@ function readBody(req) {
   });
 }
 
-// ─── XP / Level logic ─────────────────────────────────────────────────────────
 
 const LEVEL_XP = [0, 200, 500, 1000, 1800, 3000, 5000, 8000, 12000, 18000, 25000];
 const DIFF_XP = { Beginner: 15, Easy: 30, Intermediate: 60, Advanced: 120, Expert: 200 };
@@ -78,7 +68,6 @@ function prevLevelXP(xp) {
   return LEVEL_XP[lvl - 1] ?? 0;
 }
 
-// ─── User store ───────────────────────────────────────────────────────────────
 
 function loadUsers() { return loadJSON(USERS_FILE) || {}; }
 function saveUsers(users) { saveJSON(USERS_FILE, users); }
@@ -101,7 +90,6 @@ function makeUser(name, email) {
   };
 }
 
-// Legacy helper (kept for /api/init)
 function getOrCreateUser(name) {
   const users = loadUsers();
   const userId = name.trim().toLowerCase().replace(/\s+/g, '_');
@@ -119,7 +107,6 @@ function getOrCreateUser(name) {
   return { users, userId };
 }
 
-// ─── Questions store ──────────────────────────────────────────────────────────
 
 let _questions = null;
 function questions() {
@@ -127,7 +114,6 @@ function questions() {
   return _questions;
 }
 
-// ─── MIME types ───────────────────────────────────────────────────────────────
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -142,7 +128,6 @@ const MIME = {
   '.ttf': 'font/ttf',
 };
 
-// ─── Response helpers ─────────────────────────────────────────────────────────
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -174,7 +159,6 @@ function staticFile(res, filePath) {
   }
 }
 
-// ─── Router ───────────────────────────────────────────────────────────────────
 
 async function router(req, res) {
   // CORS preflight
@@ -187,7 +171,6 @@ async function router(req, res) {
   const route = req.method + ' ' + u.pathname;
   const p = u.searchParams;
 
-  // ── POST /api/register ─────────────────────────────────────────────────────
   if (route === 'POST /api/register') {
     const body = await readBody(req);
     const name = (body.name || '').trim();
@@ -202,7 +185,6 @@ async function router(req, res) {
 
     const users = loadUsers();
 
-    // Check duplicate email
     const exists = Object.values(users).find(u => u.email === email);
     if (exists) return json(res, { error: 'Email already registered. Please log in.' }, 409);
 
@@ -211,7 +193,6 @@ async function router(req, res) {
     users[user.id] = user;
     saveUsers(users);
 
-    // Seed C++ engine so first quiz answer hits the fast path
     if (engine) { try { engine.loadUser(user.id, user.name, 0, 0, 0); } catch { } }
 
     const safe = {
@@ -221,7 +202,6 @@ async function router(req, res) {
     return json(res, safe, 201);
   }
 
-  // ── POST /api/login ────────────────────────────────────────────────────────
   if (route === 'POST /api/login') {
     const body = await readBody(req);
     const email = (body.email || '').trim().toLowerCase();
@@ -241,7 +221,6 @@ async function router(req, res) {
 
     user.level = getLevel(user.xp);
 
-    // Seed C++ engine so first quiz answer hits the fast path
     if (engine) {
       try {
         const al = user.analytics || {};
@@ -262,7 +241,6 @@ async function router(req, res) {
     return json(res, safe);
   }
 
-  // ── POST /api/init ──────────────────────────────────────────────────────────
   if (route === 'POST /api/init') {
     const body = await readBody(req);
     const name = (body.name || '').trim();
@@ -283,7 +261,6 @@ async function router(req, res) {
     });
   }
 
-  // ── GET /api/questions ──────────────────────────────────────────────────────
   if (route === 'GET /api/questions') {
     let qs = questions().slice();
     const lang = p.get('language');
@@ -295,7 +272,6 @@ async function router(req, res) {
     if (diff) qs = qs.filter(q => q.difficulty === diff);
 
     const total = qs.length;
-    // Shuffle for variety per session
     for (let i = qs.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [qs[i], qs[j]] = [qs[j], qs[i]];
@@ -306,7 +282,6 @@ async function router(req, res) {
     return json(res, { questions: batch, total, offset: offs, limit: lim });
   }
 
-  // ── GET /api/languages ──────────────────────────────────────────────────────
   if (route === 'GET /api/languages') {
     const map = {};
     questions().forEach(q => {
@@ -317,7 +292,6 @@ async function router(req, res) {
     return json(res, { languages: Object.values(map) });
   }
 
-  // ── POST /api/submit ────────────────────────────────────────────────────────
   if (route === 'POST /api/submit') {
     const body = await readBody(req);
     const { userId, questionId, answer } = body;
@@ -339,14 +313,12 @@ async function router(req, res) {
     let xpEarned = 0;
     if (!alreadyAnswered) {
       if (engine) {
-        // ── C++ path: let the engine compute XP and new level ──
         try {
           const result = engine.submitAnswer(userId, questionId, answer, isCorrect, xpReward);
           user.xp = result.newXP;
           user.level = result.level;
           xpEarned = isCorrect ? xpReward : 0;
         } catch (engineErr) {
-          // Engine may not know user yet (e.g. old user pre-integration); seed & retry
           try {
             const al = user.analytics || {};
             const totals = Object.values(al).reduce((a, v) => ({ t: a.t + (v.total || 0), c: a.c + (v.correct || 0) }), { t: 0, c: 0 });
@@ -359,7 +331,6 @@ async function router(req, res) {
         }
       }
       if (!engine || xpEarned === 0 && isCorrect) {
-        // ── Pure-JS fallback ──
         xpEarned = isCorrect ? xpReward : 0;
         user.xp += xpEarned;
         user.level = getLevel(user.xp);
@@ -372,7 +343,6 @@ async function router(req, res) {
       timestamp: new Date().toISOString(),
     };
 
-    // Analytics (always tracked in JSON)
     const lang = q.language;
     if (!user.analytics[lang])
       user.analytics[lang] = { correct: 0, total: 0, byDifficulty: {}, byTopic: {} };
@@ -406,7 +376,6 @@ async function router(req, res) {
     });
   }
 
-  // ── GET /api/analytics ──────────────────────────────────────────────────────
   if (route === 'GET /api/analytics') {
     const userId = p.get('userId');
     if (!userId) return json(res, { error: 'userId required' }, 400);
@@ -434,7 +403,6 @@ async function router(req, res) {
     });
   }
 
-  // ── GET /api/xp ─────────────────────────────────────────────────────────────
   if (route === 'GET /api/xp') {
     const userId = p.get('userId');
     const users = loadUsers();
@@ -449,7 +417,6 @@ async function router(req, res) {
     });
   }
 
-  // ── GET /api/certificate ────────────────────────────────────────────────────
   if (route === 'GET /api/certificate') {
     const userId = p.get('userId');
     const lang = p.get('language');
@@ -478,13 +445,11 @@ async function router(req, res) {
     return json(res, cert);
   }
 
-  // ── POST /api/runCode ───────────────────────────────────────────────────────
   if (route === 'POST /api/runCode') {
     const body = await readBody(req);
     const { language, code } = body;
     if (!code || !language) return json(res, { error: 'language and code required' }, 400);
 
-    // Safe JS eval sandbox
     if (language.toLowerCase() === 'javascript') {
       const logs = [];
       try {
@@ -506,7 +471,6 @@ async function router(req, res) {
       }
     }
 
-    // Other languages — simulated
     return json(res, {
       output: `[Sandbox] ${language} code accepted (${(code || '').length} chars)\nTo enable live ${language} execution, integrate Judge0 or Piston API.\nStatus: ✓ Accepted`,
       error: null,
@@ -514,8 +478,6 @@ async function router(req, res) {
     });
   }
 
-  // ── Static file serving ─────────────────────────────────────────────────────
-  // Serve index.html for all non-API routes (SPA)
   const safePath = path.join(FRONTEND_DIR, u.pathname.replace(/\.\./g, ''));
   if (u.pathname !== '/' && fs.existsSync(safePath) && fs.statSync(safePath).isFile()) {
     return staticFile(res, safePath);
@@ -524,7 +486,6 @@ async function router(req, res) {
   return staticFile(res, path.join(FRONTEND_DIR, 'index.html'));
 }
 
-// ─── Boot ─────────────────────────────────────────────────────────────────────
 
 const server = http.createServer(async (req, res) => {
   try {
@@ -539,7 +500,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  // Hydrate C++ engine from persisted users.json
   if (engine) {
     const users = loadUsers();
     let count = 0;
@@ -560,11 +520,11 @@ server.listen(PORT, '0.0.0.0', () => {
   console.log('');
   console.log('  ╔═══════════════════════════════════════════╗');
   console.log('  ║                                           ║');
-  console.log('  ║   ◈  ZYNTHEX CORE — Code Intelligence    ║');
+  console.log('  ║   ◈  ZYNTHEX CORE — Code Intelligence     ║');
   console.log('  ║                                           ║');
-  console.log(`  ║   ▶   http://localhost:${PORT}              ║`);
+  console.log(`  ║   ▶   http://localhost:${PORT}            ║`);
   console.log('  ║                                           ║');
-  console.log('  ║   C++ engine active. Press Ctrl+C to stop║');
+  console.log('  ║   C++ engine active. Press Ctrl+C to stop ║');
   console.log('  ║                                           ║');
   console.log('  ╚═══════════════════════════════════════════╝');
   console.log('');
