@@ -8,7 +8,10 @@
 
 # ◈ ZYNTHEX CORE — Code Intelligence Engine
 
-> A full-stack quiz platform for mastering programming languages — powered by a hybrid **C++ / Node.js** engine with real-time XP progression, analytics, and an in-browser code playground.
+## 🌐 Live Demo
+👉 https://zynthex-core.onrender.com/
+
+> A high-performance quiz platform designed to help developers master programming languages through structured difficulty progression, real-time analytics, and a hybrid C++/Node.js execution engine.
 
 ---
 
@@ -22,51 +25,45 @@
 - 🔐 **Email + password authentication** with session persistence
 - 💻 **In-browser code playground** — live JavaScript execution
 - 🔀 **Shuffled answer options** — randomized every time for fair testing
-- 📱 **Responsive design** — works on desktop, tablet, and mobile
-- 🌙 **Cyberpunk dark theme** — sleek UI with glow effects and animations
+- 📱 **Responsive design**
+- 🌙 **Cyberpunk dark theme**
 
 ---
 
-## 🚀 Quick Start
+## ⚡ Why C++ Engine?
 
-### Local Development
+The C++ engine is used to:
+- Improve performance for scoring and XP calculations  
+- Demonstrate integration of low-level computation with high-level APIs  
+- Simulate real-world systems where performance-critical logic is offloaded  
+
+If unavailable, a JavaScript fallback ensures full functionality.
+
+---
+
+## 🚀 Quick Start (Local Development)
 
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/ZYNTHEX-CORE.git
+git clone https://github.com/REHAN-503/ZYNTHEX-CORE.git
 cd ZYNTHEX-CORE
-
-# Install dependencies
 npm install
-
-# Start the server
 npm start
 ```
 
-Open **http://localhost:3000** in your browser.
-
-### Optional: Enable C++ Engine
-
-```bash
-npm run build    # Compile C++ addon (requires node-gyp + build tools)
-npm start        # Server auto-detects and uses the native engine
-```
-
-> The C++ engine provides faster XP/scoring calculations. Without it, the server uses an identical pure-JS fallback — no features are lost.
+Open **http://localhost:3000**
 
 ---
 
-## ☁️ Deploy on Railway
+## ☁️ Deployment (Render)
 
-1. Push this repo to **GitHub**
-2. Go to [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub**
-3. Select your repo — Railway auto-detects Node.js
-4. Settings:
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-5. Click **Deploy** — your app goes live at `https://your-app.up.railway.app`
+This project is deployed on Render:
 
-> Railway sets `PORT` automatically. No environment variables needed.
+👉 https://zynthex-core.onrender.com/
+
+Render handles:
+- Port configuration  
+- Build process  
+- Deployment pipeline  
 
 ---
 
@@ -74,39 +71,19 @@ npm start        # Server auto-detects and uses the native engine
 
 ```
 ZYNTHEX-CORE/
-├── server.js                 ← Node.js HTTP server (all API routes)
-├── package.json              ← Scripts & dependencies
+├── server.js
+├── package.json
 ├── frontend/
-│   └── index.html            ← Single-page app (HTML + CSS + JS)
+│   └── index.html
 ├── data/
 │   ├── questions/
-│   │   └── questions.json    ← 1,864 MCQs across 20 languages
+│   │   └── questions.json
 │   └── users/
-│       └── users.json        ← User accounts & progress (auto-created)
+│       └── users.json
 ├── backend/addon/
-│   └── engine.cpp            ← Optional C++ N-API scoring engine
-├── binding.gyp               ← C++ build configuration
-├── .gitignore
-├── .dockerignore
-└── README.md
+│   └── engine.cpp
+├── binding.gyp
 ```
-
----
-
-## 🌐 Supported Languages
-
-| # | Language | Questions | # | Language | Questions |
-|---|----------|-----------|---|----------|-----------|
-| 1 | Python | 263 | 11 | CSS | 60 |
-| 2 | C++ | 265 | 12 | Shell | 60 |
-| 3 | Java | 226 | 13 | Perl | 55 |
-| 4 | JavaScript | 225 | 14 | Scala | 53 |
-| 5 | TypeScript | 80 | 15 | Dart | 40 |
-| 6 | C# | 80 | 16 | HTML | 40 |
-| 7 | Go | 80 | 17 | Kotlin | 40 |
-| 8 | SQL | 80 | 18 | Lua | 40 |
-| 9 | Rust | 77 | 19 | PHP | 40 |
-| 10 | Swift | 40 | 20 | R | 20 |
 
 ---
 
@@ -114,14 +91,11 @@ ZYNTHEX-CORE/
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/api/register` | Create a new account (name, email, password) |
-| `POST` | `/api/login` | Sign in with email + password |
-| `POST` | `/api/init` | Initialize or resume a session |
-| `GET` | `/api/questions` | Fetch questions (query: `language`, `difficulty`) |
-| `GET` | `/api/languages` | List all languages with question counts |
-| `POST` | `/api/submit` | Submit an answer → returns XP, correctness |
-| `GET` | `/api/analytics` | Get user analytics (query: `userId`) |
-| `POST` | `/api/runCode` | Execute code in the playground |
+| POST | /api/register | Create account |
+| POST | /api/login | Login |
+| GET | /api/questions | Fetch questions |
+| POST | /api/submit | Submit answers |
+| GET | /api/analytics | User analytics |
 
 ---
 
@@ -129,43 +103,72 @@ ZYNTHEX-CORE/
 
 | Layer | Technology |
 |-------|-----------|
-| **Backend** | Node.js (zero external dependencies) |
-| **Frontend** | Vanilla HTML / CSS / JavaScript (SPA) |
-| **Engine** | C++ 17 via N-API (optional, with JS fallback) |
-| **Database** | JSON file storage (`users.json`) |
-| **Auth** | SHA-256 hashed passwords + `sessionStorage` |
-| **Icons** | CDN-hosted official language logos |
+| Backend | Node.js |
+| Frontend | HTML / CSS / JS |
+| Engine | C++ (N-API) |
+| Storage | JSON |
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-┌──────────────┐     HTTP      ┌──────────────┐
-│   Browser    │◄─────────────►│   server.js  │
-│  (SPA)       │               │   (Node.js)  │
-│              │               │              │
-│  index.html  │               │  ┌─────────┐ │
-│  + CSS + JS  │               │  │ C++ Eng. │ │  ← Optional
-│              │               │  └────┬────┘ │
-└──────────────┘               │       │ JS   │
-                               │    fallback  │
-                               │       │      │
-                               │  ┌────▼────┐ │
-                               │  │  JSON   │ │
-                               │  │  files  │ │
-                               │  └─────────┘ │
-                               └──────────────┘
+┌────────────────────┐
+│     Client (SPA)   │
+│  HTML / CSS / JS   │
+└─────────┬──────────┘
+          │ HTTP Requests
+          ▼
+┌────────────────────┐
+│   Node.js Server   │
+│   (API Layer)      │
+│                    │
+│ • Auth Handling    │
+│ • Question Engine  │
+│ • Session Mgmt     │
+└─────────┬──────────┘
+          │
+   ┌──────▼──────┐
+   │  C++ Engine │   ← High-performance layer (optional)
+   │ (N-API Addon)│
+   │              │
+   │ • XP Logic   │
+   │ • Scoring    │
+   └──────┬──────┘
+          │
+     JS Fallback
+          │
+          ▼
+┌────────────────────┐
+│   Data Layer       │
+│   (JSON Storage)   │
+│                    │
+│ • Questions DB     │
+│ • User Data        │
+└────────────────────┘
 ```
 
 ---
 
-## 🔧 Environment Variables
+## 🔄 Request Flow
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `PORT` | `3000` | Server port (Railway sets this automatically) |
+1. Client sends request (login / quiz / submit)
+2. Node.js processes API logic
+3. Scoring handled by:
+   - C++ engine (if available) ⚡  
+   - JS fallback (if not)  
+4. Data read/write from JSON storage
+5. Response returned to client
 
+---
+
+## ⚡ Design Highlights
+
+- Hybrid architecture (Node.js + C++)
+- Performance-critical logic offloaded to native layer
+- Fault-tolerant design with automatic fallback
+- Lightweight storage using JSON (no external DB)
+- Fully stateless API design
 ---
 
 ## 📜 License
@@ -175,6 +178,6 @@ MIT © ZYNTHEX CORE
 ---
 
 <p align="center">
-  <b>Built with ❤️ and C++</b><br>
-  <sub>A hybrid engine for the modern developer</sub>
+  <b>Developed by Mahammad Rehan Khatri</b> 🚀<br>
+  <sub>Building high-performance hybrid systems with Node.js & C++</sub>
 </p>
